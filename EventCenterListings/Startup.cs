@@ -43,11 +43,13 @@ namespace EventCenterListings
                 
             }
 
-            //removed the first two functions from the configure method to make the documentation available at all times regardless if when in development or production
-           
+            
+            #region  Removed this first two functions from the configure method to make the documentation available at all times regardless if when in development or production
             app.UseSwagger();
 
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EventCenterListings v1"));
+            #endregion
+
 
             app.UseHttpsRedirection();
 
