@@ -28,6 +28,16 @@ namespace EventCenterListings
         {
 
             services.AddControllers();
+
+            // This AddCors() method allows external services to access the API 
+            services.AddCors(o =>
+           {
+               o.AddPolicy("AllowAll", builder =>
+               builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+           });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Event Centers", Version = "v1" });
@@ -52,6 +62,8 @@ namespace EventCenterListings
 
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll"); // The enable the app to use Cors 
 
             app.UseRouting();
 
